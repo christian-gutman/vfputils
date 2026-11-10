@@ -1,7 +1,7 @@
 # vfputils 
 
 
-### Visual FoxPro Runtime Utils Library
+### Visual FoxPro Tools Library
 
 
 > ⚠️ **Nota de migración y estado del proyecto:** 
