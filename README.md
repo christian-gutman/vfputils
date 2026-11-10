@@ -1,4 +1,3 @@
-# vfputils
 
 Biblioteca de Extensiones para Visual FoxPro (vfp_extensions)
 
@@ -158,7 +157,6 @@ Al invocar estas funciones desde FoxPro, los tipos mapeados en la estructura cor
 • R: Reference (Variables que deben ser precedidas por @ al invocarse para recibir datos de retorno).
 • ?: Verificación de tipo flexible dependiente del contexto de inicialización interno de la API.
 
-De FoxTable
 
 Codificación y Cadenas
 
@@ -184,7 +182,7 @@ Codificación y Cadenas
 • ? STRUNESCAPE("O''Brien")                 && "O'Brien"
 • ? STRFORMAT("Hola %s, tenés %s msjs", "Juan", "5")
 • ? lctext= StrRemoveChar("Hola efwf Z U Z", "Z")
-• cTextClean =STRCLEANSPACE(cText) [1]
+• cTextClean =STRCLEANSPACE(cText)
 
 Extracción de JSON
 
@@ -197,10 +195,9 @@ Extracción de JSON
 • ? JSONARRAYCOUNT(lcJson, "tags")           && 2
 • ? JSONGETTYPE(lcJson, "tags")              && "array"
 • lcSub = JSONEXTRACTSUBNODE(lcJson, "envio")
-• uVal = JSONGETANY(lcJson, "precio")  && VARTYPE(uVal) = "N" [1]
+• uVal = JSONGETANY(lcJson, "precio")  && VARTYPE(uVal) = "N"
 
 Criptografía y Cifrado
 
 • cData = ENCRYPTSTRING(cText, cKey)
-• cData = DECRYPTSTRING(cText, cKey) [1]
- 
+• cData = DECRYPTSTRING(cText, cKey)
