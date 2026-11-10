@@ -1,0 +1,3 @@
+LIBRARY "vfpio.fll"
+EXPORTS
+    _FoxTable      @1 PRIVATE

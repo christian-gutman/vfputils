@@ -1,0 +1,3 @@
+LIBRARY "vfputils.fll"
+EXPORTS
+    _FoxTable      @1 PRIVATE

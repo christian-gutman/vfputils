@@ -1,0 +1,4 @@
+LIBRARY "vfpgoogle.fll"
+EXPORTS
+    _FoxTable      @1 PRIVATE
+    
