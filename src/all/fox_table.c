@@ -147,7 +147,7 @@ static FoxInfo myFoxInfo[] = {
     // ------------------------------------------------------------------
 
 
-     {"ENCODEURICOMPONENT", (FPFI)Fox_EncodeURIComponent, 1, "C"},
+    {"ENCODEURICOMPONENT", (FPFI)Fox_EncodeURIComponent, 1, "C"},
     {"DECODEURICOMPONENT", (FPFI)Fox_DecodeURIComponent, 1, "C"},
     {"HTMLENTITIES",(FPFI) Fox_HtmlEntities, 1, "C"},
 
@@ -158,7 +158,7 @@ static FoxInfo myFoxInfo[] = {
     // WExec   (vfp_request.c)
     // ------------------------------------------------------------------
 
-      {"WConnect", (FPFI)Fox_WConnect, 4, "CCIC"},
+    {"WConnect", (FPFI)Fox_WConnect, 4, "CCIC"},
     {"WDisconnect", (FPFI)Fox_WDisconnect, 1, "?"},
     {"WRequest", (FPFI)Fox_WRequest, 15, "CCC????????????"},
     {"WCloseRequest", (FPFI)Fox_WCloseRequest, 1, "?"},
@@ -169,7 +169,7 @@ static FoxInfo myFoxInfo[] = {
     {"WRequestToFile", (FPFI)Fox_WRequestToFile, 13, "C,C,C,I,L,L,C,C,C,C,C,C,R"},
     {"WDownload", (FPFI)Fox_WDownload, 10, "C,C,I,L,L,C,C,C,C,R"},
 
-      // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
     // WExec (vfp_rest.c)
     // ------------------------------------------------------------------
 
