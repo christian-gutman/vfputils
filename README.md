@@ -46,6 +46,14 @@ cmake -S src/all -B build -A Win32
 cmake --build build --config Release
 ```
 
+
+```bash
+rmdir /s /q build
+```
+
+```bash
+# en bin estan los componentes
+```
 ## 🛠️ Funciones disponibles
 
 Ver https://github.com/christian-gutman/vfputils/blob/main/src/all/fox_table.c
