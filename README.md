@@ -11,7 +11,7 @@
 > 
 > A partir de ahora, **este repositorio será el hogar oficial y definitivo** para el mantenimiento, actualizaciones y evolución de **vfputils**. ¡Las contribuciones y reportes de bugs son más que bienvenidos aquí!
 
-## 🛠️ Version 1.0
+## 🛠️ Version 1.0 ( Deprecated )
 
 https://gitlab.com/christian.gutman/core-windows-c-library
 
