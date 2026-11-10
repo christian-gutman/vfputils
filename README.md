@@ -17,9 +17,18 @@ Para generar los binarios del proyecto (tanto la DLL como la FLL de FoxPro), el 
 git clone https://github.com/christian-gutman/vfputils.git
 cd vfputils
 
+
+```bash
 rmdir /s /q build
+```
+
+```bash
 cmake -S src/all -B build -A Win32 
+```
+
+```bash
 cmake --build build --config Release
+```
 
 ## 🛠️ Funciones disponibles
 
