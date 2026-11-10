@@ -14,8 +14,15 @@ Para generar los binarios del proyecto (tanto la DLL como la FLL de FoxPro), el 
 
 ## 🛠️ Procedimiento
 
+Abrir ventana de comandos
+
+```bash
 git clone https://github.com/christian-gutman/vfputils.git
+```
+
+```bash
 cd vfputils
+```
 
 
 ```bash
