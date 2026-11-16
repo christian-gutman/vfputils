@@ -1,4 +1,4 @@
-# 🔐 VFP Crypto & Firma Digital para ARCA / AFIP (`vfputils.fll`)
+# 🔐 Certificados x509 & Firma Digital para ARCA / AFIP (`vfpcerts.fll`)
 
 Script de demostración y utilidades en **Visual FoxPro (VFP)** para la gestión de certificados digitales y firma de mensajes.
 
