@@ -28,9 +28,9 @@ El ejemplo firma Tickets de Requerimiento de Acceso (**TRA**) necesarios para in
 ```text
 proyecto/
 ├── certs/
-│   └── mi_certificado.pfx    # Tu certificado digital (no subir a Git)
-├── vfputils.fll              # Librería compilada (x86)
-├── test_certs.prg        # Script principal de pruebas
+│   └── mi_certificado.pfx         # Tu certificado digital (no subir a Git)
+├── vfputils.fll  o vfpcerts.fll   # Librería compilada (x86)
+├── test_certs.prg                 # Script principal de pruebas
 └── README.md
 ```
 
@@ -185,7 +185,7 @@ Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo `LICENSE` 
 
 ## Compilacion
 
-### Solo esta libreria 
+### Solo esta libreria - vfpcerts.fll
 
 ```bash
 rmdir /s /q build
@@ -193,7 +193,7 @@ cmake -S src/certs -B build -A Win32
 cmake --build build --config Release
 ```
 
-### Todo el proyecto 
+### Todo el proyecto - vfputils.fll
 
 ```bash
 rmdir /s /q build
