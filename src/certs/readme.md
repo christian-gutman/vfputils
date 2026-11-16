@@ -84,15 +84,19 @@ Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo `LICENSE` 
 
 ## Compilacion
 
-# Solo esta libreria 
+### Solo esta libreria - > pendiente
 
+```bash
 rmdir /s /q build
 cmake -S src/certs -B build -A Win32
 cmake --build build --config Release
+```
 
-# Todo el proyecto 
+### Todo el proyecto 
 
+```bash
 rmdir /s /q build
 cmake -S src/all -B build -A Win32
 cmake --build build --config Release
- 
+ ```
+
