@@ -1,3 +1,5 @@
+
+
 rmdir /s /q build_assets
 rmdir /s /q build
 
@@ -42,6 +44,8 @@ rmdir /s /q build
 cmake -S src/vfp/certs -B build -A Win32
 cmake --build build --config Release
 
+git clone https://github.com/christian-gutman/vfputils.git
+cd vfputils
 
 rmdir /s /q build
 cmake -S src/all -B build -A Win32 
