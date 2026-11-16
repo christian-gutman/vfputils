@@ -30,7 +30,7 @@ proyecto/
 ├── certs/
 │   └── mi_certificado.pfx    # Tu certificado digital (no subir a Git)
 ├── vfputils.fll              # Librería compilada (x86)
-├── test_arca_cert.prg        # Script principal de pruebas
+├── test_certs.prg        # Script principal de pruebas
 └── README.md
 ```
 
@@ -40,8 +40,7 @@ proyecto/
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com
-   cd tu-repositorio
+   
    ```
 
 2. **Configurar los archivos:**
