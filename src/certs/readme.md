@@ -78,7 +78,7 @@ proyecto/
 ---
 ## Ejemplo 
 
-[Descargar test_Certs.prg](src/certs/examples/test_certs.prg)
+[Descargar test_Certs.prg](examples/test_certs.prg)
 
 ```code
 *----------------------------------------------------------------------
