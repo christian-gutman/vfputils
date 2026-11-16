@@ -62,7 +62,9 @@ rmdir /s /q build
 
 En proceso de documentacion.
 
-[Certificados x509](src/certs/readme.md) | [Ejemplo - Arca](src/certs/examples/test_certs.prg)
+[Certificados x509 y Firma de Mensajes](src/certs/readme.md) | [Ejemplo - Arca](src/certs/examples/test_certs.prg)
+
+[Criptografia | Hashing | Crifrado simetrico | Nonce ](src/crypto/readme.md)  
 
 
 Ver https://github.com/christian-gutman/vfputils/blob/main/src/all/fox_table.c
