@@ -41,7 +41,7 @@ cmake -S src/vfp/system -B build -A Win32
 cmake --build build --config Release
 
 rmdir /s /q build
-cmake -S src/vfp/certs -B build -A Win32
+cmake -S src/certs -B build -A Win32
 cmake --build build --config Release
 
 git clone https://github.com/christian-gutman/vfputils.git
