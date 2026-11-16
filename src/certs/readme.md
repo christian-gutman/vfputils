@@ -78,6 +78,8 @@ proyecto/
 ---
 ## Ejemplo 
 
+[Descargar test_Certs.prg](src/certs/examples/test_certs.prg)
+
 ```code
 *----------------------------------------------------------------------
 * Programa de prueba para Lectura y Firma de Certificados con FLL (ARCA / AFIP)
