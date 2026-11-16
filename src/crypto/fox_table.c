@@ -5,7 +5,7 @@ FoxInfo myFoxInfo[] = {
     {"", (FPFI)Core_InternalInit, CALLONLOAD, ""},
     {"", (FPFI)Core_InternalExit, CALLONUNLOAD, ""},
 
-     // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
     // CRYPTO HASHING   (vfp_crypto.c)
     // ------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ FoxInfo myFoxInfo[] = {
     {"HMACMD5", (FPFI)Fox_HMACMD5, 2, "CC"},
     {"HMACSHA1", (FPFI)Fox_HMACSHA1, 2, "CC"},
     {"HMACSHA256", (FPFI)Fox_HMACSHA256, 2, "CC"},
-    {"HMACSHA384", (FPFI)Fox_HMACSHA384, 2, "CC"}, // si agregaste el wrapper SHA384
+    {"HMACSHA384", (FPFI)Fox_HMACSHA384, 2, "CC"}, 
     {"HMACSHA512", (FPFI)Fox_HMACSHA512, 2, "CC"},
 
     // HMAC genérico
@@ -31,6 +31,9 @@ FoxInfo myFoxInfo[] = {
     {"MD5FILE", (FPFI)Fox_MD5File, 1, "C"},
     {"SHA1FILE", (FPFI)Fox_SHA1File, 1, "C"},
     {"SHA256FILE", (FPFI)Fox_SHA256File, 1, "C"},
+    
+    {"SHA384FILE", (FPFI)Fox_SHA384File, 1, "C"},
+    
     {"SHA512FILE", (FPFI)Fox_SHA512File, 1, "C"},
     // MD5 SHA1 SHA-256 SHA-384 SHA-512
     {"GENFILEHASH", (FPFI)Fox_GenerateFileHashAlgorithm, 2, "C,C"},
@@ -50,7 +53,6 @@ FoxInfo myFoxInfo[] = {
     // Encrypt/Decrypt con Aes256
     {"ENCRYPTSTRING", (FPFI)Fox_SecureEncryptString, 2, "C,C"}, // cData = ENCRYPTSTRING(cText, cKey)
     {"DECRYPTSTRING", (FPFI)Fox_SecureDecryptString, 2, "C,C"}, // cData = DECRYPTSTRING(cText, cKey)
-
 
 };
 

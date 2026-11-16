@@ -556,6 +556,36 @@ void CORE_CALL Fox_SHA256File(ParamBlk *parm)
 
     SafeRetValString(success && hexHash[0] != '\0' ? hexHash : "");
 }
+void CORE_CALL Fox_SHA384File(ParamBlk *parm)
+{
+    if (!parm || parm->pCount < 1)
+    {
+        SafeRetValString("");
+        return;
+    }
+
+    Value val0 = SafeGetParam(parm, 0);
+    char *pPath = SafeGetString(&val0);
+
+    if (!pPath || pPath[0] == '\0')
+    {
+        if (pPath)
+            free(pPath);
+        SafeRetValString("");
+        return;
+    }
+
+    int pathLen = (int)strlen(pPath);
+    wchar_t *wPath = StrAutoToUnicode(pPath, pathLen, NULL);
+
+    char hexHash[129] = {0};
+    BOOL success = SHA384File(wPath, hexHash);
+
+    free(wPath);
+    free(pPath);
+
+    SafeRetValString(success && hexHash[0] != '\0' ? hexHash : "");
+}
 
 // VFP: cHashHex = MD5File(cFilePath)
 void CORE_CALL Fox_SHA512File(ParamBlk *parm)

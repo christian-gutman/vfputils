@@ -96,7 +96,7 @@ static FoxInfo myFoxInfo[] = {
     {"GETEXEPATH", (FPFI)Fox_GetPathInExeFolder, 1, "C"},
     {"GETLIBPATH", (FPFI)Fox_GetPathInLibraryFolder, 1, "C"},
 
-     // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
     // CRYPTO HASHING   (vfp_crypto.c)
     // ------------------------------------------------------------------
 

@@ -13,4 +13,8 @@ vendor/
 .DS_Store
 Thumbs.db
  
-*.log'
+*.pfx
+*.p12
+*.crt
+
+*.log

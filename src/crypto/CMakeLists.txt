@@ -23,23 +23,82 @@ endif()
 
 set(DIR_BUILD "${PLATFORM_DIR}-${ARQUITECTURE_DIR}")
 
-set(VFP_SDK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../sdk")
+set(CORESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../external/core-c-sdk)
+set(LIBSTRING_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../external/libstring)
+set(LIBIO_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../external/libio)
+set(LIBCRYPTO_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../external/libcrypto)
 
-include_directories("${VFP_SDK_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/src/" "${CMAKE_CURRENT_SOURCE_DIR}/src/vfp/sdk")
+include(FetchContent)
+set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE BOOL "No buscar actualizaciones en GitHub si ya existe")
+
+FetchContent_Declare(
+  coresdk
+  GIT_REPOSITORY https://github.com/christian-gutman/core-c-sdk
+  GIT_TAG        v2.6.0.0
+  SOURCE_DIR     ${CORESDK_DIR}
+)
+FetchContent_MakeAvailable(coresdk)
+
+FetchContent_Declare(
+  libstring
+  GIT_REPOSITORY https://github.com/christian-gutman/libstring.git
+  GIT_TAG        v2.6.0.0
+  SOURCE_DIR     ${LIBSTRING_DIR}
+)
+FetchContent_MakeAvailable(libstring)
+
+FetchContent_Declare(
+  libio
+  GIT_REPOSITORY https://github.com/christian-gutman/libio.git
+  GIT_TAG        v2.6.0.0
+  SOURCE_DIR     ${LIBIO_DIR}
+)
+FetchContent_MakeAvailable(libio)
+
+FetchContent_Declare(
+  libcrypto
+  GIT_REPOSITORY https://github.com/christian-gutman/libcrypto.git
+  GIT_TAG        v2.6.0.0
+  SOURCE_DIR     ${LIBCRYPTO_DIR}
+)
+FetchContent_MakeAvailable(libcrypto)
+
+
+set(VFP_SDK_DIR  "${CORESDK_DIR}/src/vfp-sdk/x32"  )  
+
+include_directories(
+    "${CORESDK_DIR}/src/core" 
+    "${VFP_SDK_DIR}" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/vfp/sdk"
+    "${LIBSTRING_DIR}/src/strings/core"
+    "${LIBIO_DIR}/src/io/core"
+    "${LIBCRYPTO_DIR}/src/crypto/core"     
+)
 
 set(SRC_vfpcrypto
-    "../../core.h"
-    "../../core.c"
-    "../../vfp/sdk/vfp_lib.h"
-    "../../vfp/sdk/pro_ext.h"
-    "../../encoding/core/core_encoding.h"
-    "../../encoding/core/core_encoding.c"
-    "../../strings/core/core_string.h"
-    "../../strings/core/core_string.c" 
-    "../../crypto/core/core_crypto.h"
-    "../../crypto/core/core_crypto.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../sdk/vfp_types.h"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../sdk/vfp_types.c"
+   
+    "${CORESDK_DIR}/src/core/core.h"   
+    "${CORESDK_DIR}/src/core/core.c"  
+        
+    "${CORESDK_DIR}/src/vfp-sdk/x32/vfp_lib.h"   
+    "${CORESDK_DIR}/src/vfp-sdk/x32/pro_ext.h"  
+
+    "${CORESDK_DIR}/src/vfp-sdk/x32/vfp_types.h"   
+    "${CORESDK_DIR}/src/vfp-sdk/x32/vfp_types.c"  
+
+    "${LIBSTRING_DIR}/src/strings/core/core_encoding.h"    
+    "${LIBSTRING_DIR}/src/strings/core/core_encoding.c"    
+
+    "${LIBSTRING_DIR}/src/strings/core/core_string.h"    
+    "${LIBSTRING_DIR}/src/strings/core/core_string.c" 
+
+    "${LIBIO_DIR}/src/io/core/core_io.h"    
+    "${LIBIO_DIR}/src/io/core/core_io.c" 
+    
+    "${LIBCRYPTO_DIR}/src/crypto/core/core_crypto.h"    
+    "${LIBCRYPTO_DIR}/src/crypto/core/core_crypto.c" 
+     
     "${CMAKE_CURRENT_SOURCE_DIR}/crypto.rc"
     "${CMAKE_CURRENT_SOURCE_DIR}/fox_table.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/fox_table.c"
@@ -74,7 +133,7 @@ set_target_properties(vfpcrypto PROPERTIES
 
 add_custom_command(TARGET vfpcrypto POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_CURRENT_SOURCE_DIR}/../examples"
+        "${CMAKE_CURRENT_SOURCE_DIR}/examples"
         "$<TARGET_FILE_DIR:vfpcrypto>/"
 )
 
@@ -87,6 +146,5 @@ endif()
 link_directories("${VFP_SDK_DIR}/") 
 target_link_libraries(vfpcrypto PRIVATE "${VFP_SDK_DIR}/winapims.lib")
 
-#target_link_libraries(vfpcrypto PRIVATE winapims ${VFP_LIB})
-
-#target_link_libraries(vfpcrypto PRIVATE winhttp crypt32 bcrypt ncrypt shell32 ole32 ${VFP_LIB})
+target_link_libraries(vfpcrypto PRIVATE winhttp crypt32 bcrypt ncrypt shell32 ole32 ${VFP_LIB})
+ 

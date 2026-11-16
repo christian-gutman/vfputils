@@ -23,6 +23,7 @@ extern "C"
 
     void CORE_CALL Fox_SHA1File(ParamBlk *parm);
     void CORE_CALL Fox_SHA256File(ParamBlk *parm);
+    void CORE_CALL Fox_SHA384File(ParamBlk *parm);
     void CORE_CALL Fox_SHA512File(ParamBlk *parm);
     void CORE_CALL Fox_MD5File(ParamBlk *parm);
 

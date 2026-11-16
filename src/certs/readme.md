@@ -189,17 +189,21 @@ Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo `LICENSE` 
 ### Solo esta libreria - vfpcerts.fll
 
 ```bash
+cd vfputils
 rmdir /s /q build
 cmake -S src/certs -B build -A Win32
 cmake --build build --config Release
+rmdir /s /q build
 ```
 
 ### Todo el proyecto - vfputils.fll
 
 ```bash
+cd vfputils
 rmdir /s /q build
 cmake -S src/all -B build -A Win32
 cmake --build build --config Release
+rmdir /s /q build
  ```
 
 [Volver al inicio](/README.md)
