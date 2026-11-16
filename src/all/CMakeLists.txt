@@ -272,6 +272,12 @@ set_target_properties(vfputils PROPERTIES
 )
  
 
+add_custom_command(TARGET vfputils POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_CURRENT_SOURCE_DIR}/examples"
+        "$<TARGET_FILE_DIR:vfputils>/"
+)
+
 find_library(VFP_LIB NAMES winapims winapims.lib PATHS "${VFP_SDK_DIR}" NO_DEFAULT_PATH)
 #find_library(VFP_LIB NAMES ocxapi ocxapi.lib PATHS "${VFP_SDK_DIR}" NO_DEFAULT_PATH)
 if(NOT VFP_LIB)
