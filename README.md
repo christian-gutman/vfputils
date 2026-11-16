@@ -60,4 +60,9 @@ rmdir /s /q build
 ```
 ## 🛠️ Funciones disponibles
 
+En proceso de documentacion.
+
+[Certificados x509](src/certs/readme.md) | [Ejemplo - Arca](src/certs/examples/test_certs.prg)
+
+
 Ver https://github.com/christian-gutman/vfputils/blob/main/src/all/fox_table.c
