@@ -4,7 +4,7 @@ Script de demostración y utilidades en **Visual FoxPro (VFP)** para la gestión
 
 El ejemplo firma Tickets de Requerimiento de Acceso (**TRA**) necesarios para interactuar con los Web Services de **ARCA** (ex AFIP) mediante el servicio de autenticación **WSAA**.
 
-[ir a vfputils](src/readme.md) 
+[ir a vfputils](../src/readme.md) 
 
 ---
 
