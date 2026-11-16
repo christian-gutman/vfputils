@@ -196,6 +196,34 @@ LOCAL lcNonce
 lcNonce = CREATESECURENONCE(33) && 32 caracteres hexadecimales (16 bytes)
 ? "Nonce (32) : " + lcNonce + " (Len: " + TRANSFORM(LEN(lcNonce)) + ")"
 
+LOCAL lcFile, lcSecreto
+lcFile    = "C:\Dev\AnyDesk.exe"   && Ruta a un archivo existente en disco
+lcSecreto = "ClaveSecreta123"
+
+
+? "========================================================="
+? "PRUEBA 4: HASHES DIRECTOS SOBRE ARCHIVO EN DISCO"
+? "========================================================="
+? "Archivo       : " + lcFile
+? "MD5FILE       : " + MD5FILE(lcFile)
+? "SHA1FILE      : " + SHA1FILE(lcFile)
+? "SHA256FILE    : " + SHA256FILE(lcFile)
+? "SHA384FILE    : " + SHA384FILE(lcFile)
+? "SHA512FILE    : " + SHA512FILE(lcFile)
+? "GENFILEHASH   : " + GENFILEHASH(lcFile, "SHA-256")
+? ""
+
+? "========================================================="
+? "PRUEBA 5: FIRMAS HMAC SOBRE ARCHIVO EN DISCO"
+? "========================================================="
+? "HMACMD5FILE   : " + HMACMD5FILE(lcFile, lcSecreto)
+? "HMACSHA1FILE  : " + HMACSHA1FILE(lcFile, lcSecreto)
+? "HMACSHA256FILE: " + HMACSHA256FILE(lcFile, lcSecreto)
+? "HMACSHA384FILE: " + HMACSHA384FILE(lcFile, lcSecreto)
+? "HMACSHA512FILE: " + HMACSHA512FILE(lcFile, lcSecreto)
+? "GENFILEHMAC   : " + GENFILEHMAC(lcFile, lcSecreto, "SHA-256")
+
+
 *-- Liberar la biblioteca
 RELEASE LIBRARY vfpcrypto.fll
 ? ""
