@@ -4,13 +4,13 @@
 CLEAR
 
 *-- Cargar la FLL
-IF !FILE("vfputils.fll")
-    ? "Archivo 'vfputils.fll' no encontrado."
+IF !FILE("vfpcerts.fll")
+    ? "Archivo 'vfpcerts.fll' no encontrado."
     ? "Asegúrese de compilar la FLL primero a 32 bits (x86) con soporte Crypto."
     RETURN
 ENDIF
 
-SET LIBRARY TO vfputils.fll ADDITIVE
+SET LIBRARY TO vfpcerts.fll ADDITIVE
 
 ? "========================================================="
 ? "PRUEBA 1: LECTURA Y VALIDACIÓN DE VENCIMIENTO DE CERTIFICADO"
@@ -18,8 +18,8 @@ SET LIBRARY TO vfputils.fll ADDITIVE
 
 *-- Ajustar las rutas a sus archivos reales
 LOCAL lcCertFile, lcPassword, lcExpiry
-lcCertFile = "certs/mi_certificado.pfx"  && O mi_certificado.crt / .cer
-lcPassword = "MiPassword123"            && Dejar vacío "" si no tiene password
+lcCertFile = FullPath("certificado.pfx")  && O mi_certificado.crt / .cer
+lcPassword = "privada"            && Dejar vacío "" si no tiene password
 
 IF FILE(lcCertFile)
     *-- Obtener fecha de vencimiento desde la FLL
@@ -74,7 +74,7 @@ lcXmlTRA = '<?xml version="1.0" encoding="UTF-8"?>' + CHR(10) + ;
 IF FILE(lcCertFile) AND (LOWER(JUSTEXT(lcCertFile)) == "pfx")
     ? "Firmando XML usando clave privada en el PFX..."
     lcSignedB64 = CertSignMsg(lcXmlTRA, lcCertFile, lcPassword)
-    
+    ?lcSignedB64
     IF !EMPTY(lcSignedB64) and ATC("ERROR", lcSignedB64) = 0
         ? " XML firmado y codificado en Base64 con éxito!"
         ? "Firma CMS (Base64) (Primeros 150 caracteres):"
@@ -90,7 +90,7 @@ ELSE
 ENDIF
 
 *-- Liberar la biblioteca
-RELEASE LIBRARY vfputils.fll
+RELEASE LIBRARY vfpcerts.fll
 ? ""
 ? "Pruebas finalizadas."
 RETURN

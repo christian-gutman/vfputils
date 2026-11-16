@@ -35,34 +35,40 @@ void CORE_CALL Fox_CertSignMsg(ParamBlk *parm)
         SafeRetValString("ERROR: Parámetros insuficientes");
         return;
     }
-
+    
     int xmlLen = 0;
-    char *pXml = GetParamString(parm, 0, &xmlLen);
+    char *pXml = GetParamStringUtf8(parm, 0, &xmlLen);  
     if (!pXml || xmlLen <= 0) {
         SafeRetValString("ERROR: XML vacío o inválido");
         return;
     }
-
+    
     int pfxLen = 0;
-    char *pPfxPath = GetParamString(parm, 1, &pfxLen);
-    if (!pPfxPath || pfxLen <= 0) {
-        SafeRetValString("ERROR: Path del PFX vacío o inválido");
+    char *pPfxPath = GetParamString(parm, 1, &pfxLen);  
+    if (!pPfxPath) {
+        SafeRetValString("ERROR: Path del certificado vacío o inválido");
         return;
-    }
-
+    }   
+    
     int pwdLen = 0;
-    char *pPwd = GetParamString(parm, 2, &pwdLen);
+    char *pPwd = GetParamString(parm, 2, &pwdLen);  
+   //
+    int dataLen = 0;
+    char* data = StrCleanSpaces(pXml);
+    dataLen = strlen(data);
 
-    // Delegar al Core puro en C
-    char *base64Result = Cert_SignMessage(pXml, xmlLen, pPfxPath, pfxLen, pPwd, pwdLen);
-
+    char *base64Result = NULL; 
+    base64Result = Cert_SignMessage(data, dataLen, pPfxPath, pfxLen, pPwd, pwdLen);
+   
     if (base64Result) {
         SafeRetValString(base64Result);
-        free(base64Result); // El core hizo malloc, nosotros lo liberamos acá tras enviarlo a VFP
+        free(base64Result); 
     } else {
         SafeRetValString("ERROR: No se pudo firmar el mensaje");
-    }
+    } 
+
     free(pPfxPath);
     free(pXml);
     free(pPwd);
+    free(data);
 }
