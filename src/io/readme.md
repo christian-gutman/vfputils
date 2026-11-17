@@ -91,8 +91,8 @@ proyecto/
 
 ## Ejemplos
 
-* [Descargar test_paths.prg](examples/test_paths.prg) - Pruebas de descubrimiento dinámico de rutas (`GETEXEPATH`, `GETLIBPATH` y `GETAPPDATAPATH`).
-* [Descargar test_ini_rw.prg](examples/test_ini_rw.prg) - Pruebas de escritura y lectura de cadenas y enteros en archivos `.INI` con soporte Unicode.
+* [Descargar test_paths.prg](examples/test_path.prg) - Pruebas de descubrimiento dinámico de rutas (`GETEXEPATH`, `GETLIBPATH` y `GETAPPDATAPATH`).
+* [Descargar test_ini_rw.prg](examples/test_ini_read_write.prg) - Pruebas de escritura y lectura de cadenas y enteros en archivos `.INI` con soporte Unicode.
 * [Descargar test_ini_delete.prg](examples/test_ini_delete.prg) - Pruebas de borrado de claves (`DELETEINIKEY`) y secciones completas (`DELETEINISECTION`) en archivos `.INI`.
 
 
