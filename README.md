@@ -66,5 +66,6 @@ En proceso de documentacion.
 
 [Criptografia | Hashing | Crifrado simetrico | Nonce ](src/crypto/readme.md)  
 
+[Lectura y Escritura de Archivos o Carpetas | Lectura / Escritura archivos Ini ](src/io/readme.md)  
 
 Ver https://github.com/christian-gutman/vfputils/blob/main/src/all/fox_table.c
