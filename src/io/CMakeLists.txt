@@ -23,23 +23,72 @@ endif()
 
 set(DIR_BUILD "${PLATFORM_DIR}-${ARQUITECTURE_DIR}")
 
-set(VFP_SDK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../sdk")
+set(CORESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../external/core-c-sdk)
+set(LIBSTRING_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../external/libstring)
+set(LIBIO_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../external/libio)
 
-include_directories("${VFP_SDK_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/src/" "${CMAKE_CURRENT_SOURCE_DIR}/src/vfp/sdk")
+
+include(FetchContent)
+set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE BOOL "No buscar actualizaciones en GitHub si ya existe")
+
+FetchContent_Declare(
+  coresdk
+  GIT_REPOSITORY https://github.com/christian-gutman/core-c-sdk
+  GIT_TAG        v2.6.0.0
+  SOURCE_DIR     ${CORESDK_DIR}
+)
+FetchContent_MakeAvailable(coresdk)
+
+FetchContent_Declare(
+  libstring
+  GIT_REPOSITORY https://github.com/christian-gutman/libstring.git
+  GIT_TAG        v2.6.0.0
+  SOURCE_DIR     ${LIBSTRING_DIR}
+)
+FetchContent_MakeAvailable(libstring)
+
+FetchContent_Declare(
+  libio
+  GIT_REPOSITORY https://github.com/christian-gutman/libio.git
+  GIT_TAG        v2.6.0.0
+  SOURCE_DIR     ${LIBIO_DIR}
+)
+FetchContent_MakeAvailable(libio)
+
+
+set(VFP_SDK_DIR  "${CORESDK_DIR}/src/vfp-sdk/x32"  )  
+
+
+include_directories(
+    "${CORESDK_DIR}/src/core" 
+    "${VFP_SDK_DIR}" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/vfp/sdk"
+    "${LIBSTRING_DIR}/src/strings/core"
+    "${LIBIO_DIR}/src/io/core"
+)
 
 set(SRC_vfpio
-    "../../core.h"
-    "../../core.c"
-    "../../vfp/sdk/vfp_lib.h"
-    "../../vfp/sdk/pro_ext.h"
-    "../../encoding/core/core_encoding.h"
-    "../../encoding/core/core_encoding.c"
-    "../../strings/core/core_string.h"
-    "../../strings/core/core_string.c"
-    "../../io/core/core_io.h"
-    "../../io/core/core_io.c" 
-    "${CMAKE_CURRENT_SOURCE_DIR}/../sdk/vfp_types.h"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../sdk/vfp_types.c"
+   
+    "${CORESDK_DIR}/src/core/core.h"   
+    "${CORESDK_DIR}/src/core/core.c"  
+    
+    
+    "${CORESDK_DIR}/src/vfp-sdk/x32/vfp_lib.h"   
+    "${CORESDK_DIR}/src/vfp-sdk/x32/pro_ext.h"  
+
+    "${CORESDK_DIR}/src/vfp-sdk/x32/vfp_types.h"   
+    "${CORESDK_DIR}/src/vfp-sdk/x32/vfp_types.c"  
+
+    "${LIBSTRING_DIR}/src/strings/core/core_encoding.h"    
+    "${LIBSTRING_DIR}/src/strings/core/core_encoding.c"    
+
+    "${LIBSTRING_DIR}/src/strings/core/core_string.h"    
+    "${LIBSTRING_DIR}/src/strings/core/core_string.c" 
+
+    "${LIBIO_DIR}/src/io/core/core_io.h"    
+    "${LIBIO_DIR}/src/io/core/core_io.c" 
+    
     "${CMAKE_CURRENT_SOURCE_DIR}/io.rc"
     "${CMAKE_CURRENT_SOURCE_DIR}/fox_table.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/fox_table.c"
@@ -74,7 +123,7 @@ set_target_properties(vfpio PROPERTIES
 
 add_custom_command(TARGET vfpio POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_CURRENT_SOURCE_DIR}/../examples"
+        "${CMAKE_CURRENT_SOURCE_DIR}/examples"
         "$<TARGET_FILE_DIR:vfpio>/"
 )
 
